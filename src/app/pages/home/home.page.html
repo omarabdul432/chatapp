@@ -1,0 +1,79 @@
+<ion-header class="title-header">
+  <ion-toolbar  color="primary" class="ion-no-border">
+    <ion-title>Chat App</ion-title>
+    <ion-button slot="end" id="logout" fill="clear">
+      <ion-icon name="ellipsis-vertical-outline" slot="icon-only" color="light"></ion-icon>
+    </ion-button>
+    <ion-popover #mymodal trigger="logout" triggerAction="click" (click)="logout()">
+      <ng-template>
+      <ion-content class="ion-padding ion-text-center">
+        <ion-label>LOGOUT</ion-label>
+      </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+
+  <ion-segment mode="md" [value]="segment" (ionChange)="onSegmentChange($event)">
+    <ion-segment-button value="chats">
+      <ion-label>Chats</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="status"> 
+      <ion-label>Status</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="calls">
+      <ion-label>Calls</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+
+<ion-content color="light">
+    <ion-list *ngIf="segment=='chats' && (chatRooms|async) as rooms">
+      <ion-list-header color="light" class="ion-padding-bottom">Recent Chats</ion-list-header>
+
+      <ion-item color="light" detail *ngFor="let item of rooms" (click)="getChat(item)">
+       <ion-avatar slot="start">
+        <img [src]="item.photo" alt="">
+       </ion-avatar>
+       
+       <ion-label>
+        {{item.name}}
+        <P>
+          <ion-text color="medium">message</ion-text>
+        </P>
+
+      </ion-label>
+      <ion-text slot="end" color="medium">10:10 am</ion-text>
+      </ion-item>
+    </ion-list>
+
+
+
+<ion-fab slot="fixed" horizontal="end" vertical="bottom" class="ion-margin-bottom">
+  <ion-fab-button (click)="newChat()" > 
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-modal [isOpen]="openNewChat">
+<ng-template>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>New Chat</ion-title>
+      <ion-buttons slot="end" (click)="cancel()">
+        <ion-button>Cancel</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content *ngIf="( users| async) as user$" color="light">
+    <ion-list class="ion-margin-top">
+      <app-user-list *ngFor="let item of user$" [item]="item"></app-user-list>
+    </ion-list>
+  </ion-content>
+</ng-template>
+</ion-modal>
+
+
+</ion-content>
+

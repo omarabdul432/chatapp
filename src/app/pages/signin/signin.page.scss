@@ -1,0 +1,50 @@
+ion-content{
+    .header{
+        text-align: center;
+        margin-top: 40%;
+        .title{
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            
+        }
+        .subtitle{
+            font-size: 1.3rem;
+            font-weight: bold;
+          
+        }
+    }
+    form{
+        div{
+            padding: 25px;
+            ion-item{
+                --background:transparent;
+                margin-top: 10px;          
+            }
+            span{
+                color: red;
+                margin-left: 15px;
+                font-weight: bold;
+            }
+
+            ion-button{
+                margin-top: 20px;
+            }
+        }
+        ion-text{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10%;
+            a{
+                font-size: 1.2rem;
+            }
+        }
+        .Signup{
+            position: absolute;
+            left: 15%;
+            bottom: 5%;
+        }
+    }
+
+}

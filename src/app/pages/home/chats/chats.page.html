@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>chats</ion-title>
+    <ion-buttons>
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light"></ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-textarea placeholder="Send message" class="ion-text-center" rows="1" autoGrow slot="start"></ion-textarea>
+    <ion-buttons slot="end">
+      <ion-fab-button *ngIf="!isLoading" size="small">
+        <ion-icon name="send-outline" size="small"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button *ngIf="isLoading" size="small">
+        <ion-spinner name="crescent" size="small"></ion-spinner>
+      </ion-fab-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
