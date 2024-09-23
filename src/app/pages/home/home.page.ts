@@ -82,7 +82,6 @@ export class HomePage implements OnInit {
         return querySnapShot.docs.map(doc => doc.data())
       })
     return from(querySnapshot)
-
   }
 
   cancel() {
